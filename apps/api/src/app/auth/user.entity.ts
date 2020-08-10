@@ -18,7 +18,7 @@ export class User extends BaseEntity {
   @PrimaryGeneratedColumn({ name: 'Id' })
   id: number;
 
-  @Index('', { unique: true })
+  @Index({ unique: true })
   @Column({ name: 'UserName', comment: 'user authentication name' })
   username: string;
 
