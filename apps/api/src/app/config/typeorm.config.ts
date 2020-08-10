@@ -1,5 +1,4 @@
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
-import { join } from 'path';
 import { Product } from '../product-inventory/products/product.entity';
 import { User } from '../auth/user.entity';
 import { CustomNamingStrategy } from './custom-naming.strategy';
@@ -16,5 +15,3 @@ export const typeOrmConfig: TypeOrmModuleOptions = {
   //logging: 'all',
   namingStrategy: new CustomNamingStrategy(),
 };
-console.log(join(__filename));
-console.log(join('/../**/*.entity{.ts,.js }'));

@@ -1,5 +1,4 @@
 import { DefaultNamingStrategy, NamingStrategyInterface, Table } from 'typeorm';
-import { snakeCase } from 'typeorm/util/StringUtils';
 
 export class CustomNamingStrategy extends DefaultNamingStrategy
   implements NamingStrategyInterface {
@@ -32,7 +31,6 @@ export class CustomNamingStrategy extends DefaultNamingStrategy
   }
 
   primaryKeyName(tableOrName: Table | string, columnNames: string[]): string {
-
     const clonedColumnNames = [...columnNames];
     clonedColumnNames.sort();
     const tableName =
@@ -46,7 +44,6 @@ export class CustomNamingStrategy extends DefaultNamingStrategy
     tableOrName: Table | string,
     columnNames: string[]
   ): string {
-
     const clonedColumnNames = [...columnNames];
     clonedColumnNames.sort();
     const tableName =
@@ -61,7 +58,6 @@ export class CustomNamingStrategy extends DefaultNamingStrategy
     columnNames: string[],
     where?: string
   ): string {
-
     const clonedColumnNames = [...columnNames];
     clonedColumnNames.sort();
     const tableName =

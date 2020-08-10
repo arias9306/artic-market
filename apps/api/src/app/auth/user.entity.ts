@@ -6,6 +6,8 @@ import {
   Column,
   OneToMany,
   Index,
+  CreateDateColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 import * as bcryptjs from 'bcryptjs';
 import { Product } from '../product-inventory/products/product.entity';
@@ -17,7 +19,7 @@ export class User extends BaseEntity {
   id: number;
 
   @Index('', { unique: true })
-  @Column({ name: 'UserName', comment: 'user authentication name'})
+  @Column({ name: 'UserName', comment: 'user authentication name' })
   username: string;
 
   @Column({ name: 'Password' })
@@ -28,6 +30,12 @@ export class User extends BaseEntity {
 
   @OneToMany('Product', 'user', { eager: false })
   products: Product[];
+
+  @CreateDateColumn({ name: 'CreatedAt' })
+  createdAt: Date;
+
+  @UpdateDateColumn({ name: 'ModifiedAt' })
+  modifiedAt: Date;
 
   async validatePassword(password: string): Promise<boolean> {
     const hash = await bcryptjs.hash(password, this.salt);

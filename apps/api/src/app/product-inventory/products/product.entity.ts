@@ -4,8 +4,8 @@ import {
   PrimaryGeneratedColumn,
   Column,
   ManyToOne,
-  RelationId,
   JoinColumn,
+  CreateDateColumn,
 } from 'typeorm';
 import { User } from '../../auth/user.entity';
 
@@ -17,8 +17,14 @@ export class Product extends BaseEntity {
   @Column({ name: 'Name' })
   name: string;
 
-  // @Column({ name: 'UserId' })
-  // userId: number;
+  @Column({ name: 'UserId' })
+  userId: number;
+
+  @CreateDateColumn({ name: 'CreatedAt' })
+  createdAt: Date;
+
+  @CreateDateColumn({ name: 'ModifiedAt' })
+  modifiedAt: Date;
 
   @ManyToOne('User', 'products', { eager: false, nullable: false })
   @JoinColumn({ name: 'UserId' })
